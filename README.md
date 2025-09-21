@@ -1,6 +1,7 @@
 # SC Editor
 
 [Technical Requirements (ru)](./docs/technical_requirements.md)
+[Technical Requirements (en)](./docs/technical_requirements-en.md)
 
 ## Building
 
@@ -29,6 +30,34 @@ mvn clean compile assembly:single
    Note: JOGL requires you to pass certain VM options. So do not delete it, otherwise
    the program will not work.
 
+## Docker
+
+Build docker image.
+
+```shell
+docker build -t sc-editor .
+```
+
+Run docker linux
+
+```shell
+docker run \
+  -e DISPLAY=host.docker.internal:0.0 \
+  -v "$(pwd)/sc:/app/sc" \
+  -v "$(pwd)/export:/app/screenshots" \
+  --rm sc-editor
+```
+
+Run with powershell
+```shell
+docker run `
+  -e DISPLAY=host.docker.internal:0.0 `
+  -v "${pwd}\sc:/app/sc" `
+  -v "${pwd}\export:/app/screenshots" `
+  --rm sc-editor
+```
+
+
 ### Troubleshooting
 
 If you have issues with running an application try few next steps.
@@ -38,3 +67,5 @@ According to [the question](https://stackoverflow.com/questions/66722833/executa
 ```shell
 java --illegal-access=permit -jar sc-editor.jar
 ```
+
+##
